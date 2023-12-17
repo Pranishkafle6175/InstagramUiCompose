@@ -100,16 +100,35 @@ fun ProfileDescription(
             lineHeight = lineHeight
             )
 
-        followedby.forEachIndexed { index, value ->
+        Text(text = buildAnnotatedString {
+            val boldStyle= SpanStyle(
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+            append("Followed by ")
 
-            Text(text = buildAnnotatedString {
-                append("Followed by ")
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)){
+            followedby.forEachIndexed { index, value ->
+                pushStyle(boldStyle)
+                append(value)
 
+//                pushStyle is used to put style wherease pop is used to remove the style
+                pop()
+                Spacer(modifier = Modifier.width(8.dp))
+
+                if(index < followedby.size-1){
+                    append(", ")
                 }
             }
-            )
-        }
+            if(othercount>2){
+                append(" and ")
+                pushStyle(boldStyle)
+                append("$othercount others")
+            }
+            },
+            lineHeight = lineHeight,
+            letterSpacing=letterSpacing
+        )
+
 
 
     }

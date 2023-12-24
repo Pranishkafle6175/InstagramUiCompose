@@ -144,7 +144,7 @@ fun RoundedImage(painter: Painter,modifier:Modifier=Modifier){
         modifier
             .aspectRatio(1f, matchHeightConstraintsFirst = true)
             .border(
-                width = 2.dp,
+                width = 3.dp,
                 color = Color.LightGray, shape = CircleShape
             )
             .clip(CircleShape)

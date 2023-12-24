@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     ProfileImage()
                     Spacer(modifier = Modifier.height(25.dp))
                     ButtonSection(modifier = Modifier.fillMaxWidth())
+                    ImageSection(modifier= Modifier.fillMaxWidth())
 
                 }
 
@@ -95,21 +97,21 @@ fun ButtonSection(modifier: Modifier=Modifier){
             text = "Following",
             icon = Icons.Default.KeyboardArrowDown,
             modifier = Modifier
-                .defaultMinSize(minWidth=minWidth)
+                .defaultMinSize(minWidth = minWidth)
                 .height(height)
         )
 
         ActionButton(
             text = "Message",
             modifier = Modifier
-                .defaultMinSize(minWidth=minWidth)
+                .defaultMinSize(minWidth = minWidth)
                 .height(height)
         )
 
         ActionButton(
             text = "Email",
             modifier = Modifier
-                .defaultMinSize(minWidth=minWidth)
+                .defaultMinSize(minWidth = minWidth)
                 .height(height)
         )
 
@@ -131,7 +133,8 @@ fun ActionButton(
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier=modifier.border(1.dp, color = Color.LightGray, shape = RoundedCornerShape(5.dp))
+        modifier= modifier
+            .border(1.dp, color = Color.LightGray, shape = RoundedCornerShape(5.dp))
             .padding(6.dp)
 
     ){
@@ -150,3 +153,80 @@ fun ActionButton(
     }
 
 }
+
+//The weight modifier in Jetpack Compose is used to specify
+// how much of the available space a composable should occupy within a Row or Column.
+// It is a way to distribute the available space among the children of a layout based on
+// their relative weights.
+@Composable
+fun ImageSection(modifier: Modifier?=Modifier){
+    Row (modifier = Modifier.padding(10.dp)){
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+
+            RoundedImage(painter = painterResource(id =R.drawable.youtube),
+                modifier = Modifier
+                    .size(100.dp)
+                    .padding(10.dp)
+            )
+
+            Text(text = "Youtube",
+                    fontWeight = FontWeight.SemiBold
+                )
+
+        }
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ){
+
+            RoundedImage(painter = painterResource(id =R.drawable.qa),
+                modifier = Modifier
+                    .size(100.dp)
+                    .padding(10.dp)
+            )
+
+            Text(text = "Q&A",
+                fontWeight = FontWeight.SemiBold)
+
+        }
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+
+            RoundedImage(painter = painterResource(id =R.drawable.discord),
+                modifier = Modifier
+                    .size(100.dp)
+                    .padding(10.dp)
+            )
+
+            Text(text = "Discord",
+                fontWeight = FontWeight.SemiBold)
+
+        }
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+
+            RoundedImage(painter = painterResource(id =R.drawable.telegram),
+                modifier = Modifier
+                    .size(100.dp)
+                    .padding(10.dp)
+            )
+
+            Text(text = "Telegram",
+                fontWeight = FontWeight.SemiBold)
+
+        }
+
+    }
+}
+
